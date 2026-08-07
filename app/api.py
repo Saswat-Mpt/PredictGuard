@@ -70,6 +70,12 @@ MODELS_DIR = PROJECT_ROOT / "models"
 # ---------------------------------------------------------------------------
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    import pathlib
+    try:
+        pathlib.WindowsPath()
+    except NotImplementedError:
+        pathlib.WindowsPath = pathlib.PosixPath
+
     logger.info("Loading PredictGuard pipeline from %s ...", MODELS_DIR)
     t0 = time.time()
     _state["pipeline"] = PredictGuardPipeline.load(MODELS_DIR)

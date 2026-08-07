@@ -28,6 +28,11 @@ from src.pipeline import PredictGuardPipeline
 
 @pytest.fixture
 def client():
+    import pathlib
+    try:
+        pathlib.WindowsPath()
+    except NotImplementedError:
+        pathlib.WindowsPath = pathlib.PosixPath
     with TestClient(app) as c:
         yield c
 
@@ -102,6 +107,11 @@ def test_api_invalid_batch(client):
 
 def test_dashboard_loads_pipeline():
     """PredictGuardPipeline loader must load saved pipeline cleanly."""
+    import pathlib
+    try:
+        pathlib.WindowsPath()
+    except NotImplementedError:
+        pathlib.WindowsPath = pathlib.PosixPath
     models_dir = PROJECT_ROOT / "models"
     p = PredictGuardPipeline.load(models_dir)
     assert p is not None

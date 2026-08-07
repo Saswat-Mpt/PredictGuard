@@ -233,6 +233,12 @@ class ComponentPredictor:
     # ------------------------------------------------------------------
     @classmethod
     def load(cls, models_dir: Path) -> "ComponentPredictor":
+        import pathlib
+        try:
+            pathlib.WindowsPath()
+        except NotImplementedError:
+            pathlib.WindowsPath = pathlib.PosixPath
+
         out = Path(models_dir) / cls.MODEL_FILENAME
         data = joblib.load(out)
         obj = cls(models_dir=models_dir)

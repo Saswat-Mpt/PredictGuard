@@ -56,6 +56,11 @@ TIER_COLORS = {
 # ---------------------------------------------------------------------------
 @st.cache_resource
 def load_pipeline():
+    import pathlib
+    try:
+        pathlib.WindowsPath()
+    except NotImplementedError:
+        pathlib.WindowsPath = pathlib.PosixPath
     models_dir = PROJECT_ROOT / "models"
     return PredictGuardPipeline.load(models_dir)
 

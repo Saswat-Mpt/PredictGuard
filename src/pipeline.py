@@ -471,6 +471,13 @@ class PredictGuardPipeline:
     @classmethod
     def load(cls, models_dir: Path) -> "PredictGuardPipeline":
         """Load pipeline from models/predictguard_pipeline.pkl."""
+        # Cross-platform compatibility patch for unpickling WindowsPath on Linux/macOS
+        import pathlib
+        try:
+            pathlib.WindowsPath()
+        except NotImplementedError:
+            pathlib.WindowsPath = pathlib.PosixPath
+
         pipeline_path = Path(models_dir) / "predictguard_pipeline.pkl"
         pipeline = joblib.load(pipeline_path)
         logger.info(
