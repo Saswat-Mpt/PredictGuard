@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data (large CSVs — download separately)
+data/raw/*.csv
+data/processed/
+
+# Reports (generated artefacts — regenerate by running notebook)
+# reports/  <-- keep this commented out if you want to commit the reports
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+logs/
+
+# MLflow
+mlruns/
+
+# Pytest
+.pytest_cache/
+
+# Data
+data/raw/
+data/processed/*.parquet

@@ -1,0 +1,87 @@
+{
+  "machine_id": 95,
+  "timestamp": "2015-11-01 06:00:00",
+  "raw_score": 6e-06,
+  "calibrated_probability": 0.000276,
+  "risk_level": "LOW",
+  "top_positive_features": [
+    "model_model4",
+    "model_model2",
+    "model_model3",
+    "rotate_rolling_std_24h",
+    "age"
+  ],
+  "top_negative_features": [
+    "maintenance_count_last_30_days",
+    "errors_last_24h",
+    "maintenance_count_last_year",
+    "rolling_error_rate_24h",
+    "volt_rolling_mean_24h"
+  ],
+  "top_positive_details": [
+    {
+      "feature": "model_model4",
+      "shap": 0.0644288957118988,
+      "value": 0.0,
+      "group": "other"
+    },
+    {
+      "feature": "model_model2",
+      "shap": 0.016936169937253,
+      "value": 1.0,
+      "group": "other"
+    },
+    {
+      "feature": "model_model3",
+      "shap": 0.01055101864039898,
+      "value": 0.0,
+      "group": "other"
+    },
+    {
+      "feature": "rotate_rolling_std_24h",
+      "shap": 0.0071645076386630535,
+      "value": 48.69510835465679,
+      "group": "rotation"
+    },
+    {
+      "feature": "age",
+      "shap": 0.0050505162216722965,
+      "value": 18.0,
+      "group": "other"
+    }
+  ],
+  "top_negative_details": [
+    {
+      "feature": "maintenance_count_last_30_days",
+      "shap": -3.3399901390075684,
+      "value": 6.0,
+      "group": "maintenance"
+    },
+    {
+      "feature": "errors_last_24h",
+      "shap": -2.2265472412109375,
+      "value": 0.0,
+      "group": "errors"
+    },
+    {
+      "feature": "maintenance_count_last_year",
+      "shap": -0.9790394902229309,
+      "value": 28.0,
+      "group": "maintenance"
+    },
+    {
+      "feature": "rolling_error_rate_24h",
+      "shap": -0.6583995819091797,
+      "value": 0.0,
+      "group": "errors"
+    },
+    {
+      "feature": "volt_rolling_mean_24h",
+      "shap": -0.35393327474594116,
+      "value": 165.34130714525534,
+      "group": "voltage"
+    }
+  ],
+  "plain_english_explanation": "Machine 95 \u2014 Failure Risk 0.0% (LOW)\n\nRisk increased because:\n  \u2022 model model4 = 0.000 (SHAP +0.0644)\n  \u2022 model model2 = 1.000 (SHAP +0.0169)\n  \u2022 model model3 = 0.000 (SHAP +0.0106)\n  \u2022 rotate rolling std 24h = 48.695 (SHAP +0.0072)\n  \u2022 age = 18.000 (SHAP +0.0051)\n\nRisk decreased because:\n  \u2022 maintenance count last 30 days = 6.000 (SHAP -3.3400)\n  \u2022 errors last 24h = 0.000 (SHAP -2.2265)\n  \u2022 maintenance count last year = 28.000 (SHAP -0.9790)\n  \u2022 rolling error rate 24h = 0.000 (SHAP -0.6584)\n  \u2022 volt rolling mean 24h = 165.341 (SHAP -0.3539)",
+  "generated_at": "2026-08-07T22:11:47.154863Z"
+}

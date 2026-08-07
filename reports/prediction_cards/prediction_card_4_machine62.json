@@ -1,0 +1,87 @@
+{
+  "machine_id": 62,
+  "timestamp": "2015-10-25 06:00:00",
+  "raw_score": 4e-06,
+  "calibrated_probability": 0.000276,
+  "risk_level": "LOW",
+  "top_positive_features": [
+    "rotation_div_voltage",
+    "age",
+    "model_model3",
+    "pressure_div_rotation",
+    "pressure_x_vibration"
+  ],
+  "top_negative_features": [
+    "maintenance_count_last_30_days",
+    "errors_last_24h",
+    "maintenance_count_last_year",
+    "rolling_error_rate_24h",
+    "volt_rolling_mean_24h"
+  ],
+  "top_positive_details": [
+    {
+      "feature": "rotation_div_voltage",
+      "shap": 0.02001410350203514,
+      "value": 2.0265618780679917,
+      "group": "voltage"
+    },
+    {
+      "feature": "age",
+      "shap": 0.016734370961785316,
+      "value": 20.0,
+      "group": "other"
+    },
+    {
+      "feature": "model_model3",
+      "shap": 0.008877414278686047,
+      "value": 0.0,
+      "group": "other"
+    },
+    {
+      "feature": "pressure_div_rotation",
+      "shap": 0.00831330195069313,
+      "value": 0.2896951835916807,
+      "group": "pressure"
+    },
+    {
+      "feature": "pressure_x_vibration",
+      "shap": 0.006634702440351248,
+      "value": 4869.990607232869,
+      "group": "vibration"
+    }
+  ],
+  "top_negative_details": [
+    {
+      "feature": "maintenance_count_last_30_days",
+      "shap": -3.216092348098755,
+      "value": 5.0,
+      "group": "maintenance"
+    },
+    {
+      "feature": "errors_last_24h",
+      "shap": -2.2111477851867676,
+      "value": 0.0,
+      "group": "errors"
+    },
+    {
+      "feature": "maintenance_count_last_year",
+      "shap": -0.9561101198196411,
+      "value": 30.0,
+      "group": "maintenance"
+    },
+    {
+      "feature": "rolling_error_rate_24h",
+      "shap": -0.648713231086731,
+      "value": 0.0,
+      "group": "errors"
+    },
+    {
+      "feature": "volt_rolling_mean_24h",
+      "shap": -0.39585041999816895,
+      "value": 169.78447459085035,
+      "group": "voltage"
+    }
+  ],
+  "plain_english_explanation": "Machine 62 \u2014 Failure Risk 0.0% (LOW)\n\nRisk increased because:\n  \u2022 rotation div voltage = 2.027 (SHAP +0.0200)\n  \u2022 age = 20.000 (SHAP +0.0167)\n  \u2022 model model3 = 0.000 (SHAP +0.0089)\n  \u2022 pressure div rotation = 0.290 (SHAP +0.0083)\n  \u2022 pressure x vibration = 4869.991 (SHAP +0.0066)\n\nRisk decreased because:\n  \u2022 maintenance count last 30 days = 5.000 (SHAP -3.2161)\n  \u2022 errors last 24h = 0.000 (SHAP -2.2111)\n  \u2022 maintenance count last year = 30.000 (SHAP -0.9561)\n  \u2022 rolling error rate 24h = 0.000 (SHAP -0.6487)\n  \u2022 volt rolling mean 24h = 169.784 (SHAP -0.3959)",
+  "generated_at": "2026-08-07T22:11:47.135540Z"
+}

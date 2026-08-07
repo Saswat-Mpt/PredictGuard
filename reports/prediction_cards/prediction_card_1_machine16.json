@@ -1,0 +1,87 @@
+{
+  "machine_id": 16,
+  "timestamp": "2015-07-01 01:00:00",
+  "raw_score": 0.999804,
+  "calibrated_probability": 0.944226,
+  "risk_level": "CRITICAL",
+  "top_positive_features": [
+    "errors_last_24h",
+    "rolling_error_rate_24h",
+    "rotate_rolling_mean_24h",
+    "pressure_rolling_min_24h",
+    "rotate_rolling_median_24h"
+  ],
+  "top_negative_features": [
+    "error2_count_24h",
+    "error3_count_24h",
+    "age",
+    "error5_count_24h",
+    "volt_rolling_mean_24h"
+  ],
+  "top_positive_details": [
+    {
+      "feature": "errors_last_24h",
+      "shap": 4.252881050109863,
+      "value": 3.0,
+      "group": "errors"
+    },
+    {
+      "feature": "rolling_error_rate_24h",
+      "shap": 1.3681774139404297,
+      "value": 0.125,
+      "group": "errors"
+    },
+    {
+      "feature": "rotate_rolling_mean_24h",
+      "shap": 0.8887354731559753,
+      "value": 372.54770294239074,
+      "group": "rotation"
+    },
+    {
+      "feature": "pressure_rolling_min_24h",
+      "shap": 0.7350649237632751,
+      "value": 113.285097394593,
+      "group": "pressure"
+    },
+    {
+      "feature": "rotate_rolling_median_24h",
+      "shap": 0.5672920942306519,
+      "value": 377.55631165218153,
+      "group": "rotation"
+    }
+  ],
+  "top_negative_details": [
+    {
+      "feature": "error2_count_24h",
+      "shap": -0.41357260942459106,
+      "value": 1.0,
+      "group": "errors"
+    },
+    {
+      "feature": "error3_count_24h",
+      "shap": -0.23980869352817535,
+      "value": 1.0,
+      "group": "errors"
+    },
+    {
+      "feature": "age",
+      "shap": -0.1938532292842865,
+      "value": 3.0,
+      "group": "other"
+    },
+    {
+      "feature": "error5_count_24h",
+      "shap": -0.18583285808563232,
+      "value": 0.0,
+      "group": "errors"
+    },
+    {
+      "feature": "volt_rolling_mean_24h",
+      "shap": -0.15993718802928925,
+      "value": 171.06105415017137,
+      "group": "voltage"
+    }
+  ],
+  "plain_english_explanation": "Machine 16 \u2014 Failure Risk 94.4% (CRITICAL)\n\nRisk increased because:\n  \u2022 errors last 24h = 3.000 (SHAP +4.2529)\n  \u2022 rolling error rate 24h = 0.125 (SHAP +1.3682)\n  \u2022 rotate rolling mean 24h = 372.548 (SHAP +0.8887)\n  \u2022 pressure rolling min 24h = 113.285 (SHAP +0.7351)\n  \u2022 rotate rolling median 24h = 377.556 (SHAP +0.5673)\n\nRisk decreased because:\n  \u2022 error2 count 24h = 1.000 (SHAP -0.4136)\n  \u2022 error3 count 24h = 1.000 (SHAP -0.2398)\n  \u2022 age = 3.000 (SHAP -0.1939)\n  \u2022 error5 count 24h = 0.000 (SHAP -0.1858)\n  \u2022 volt rolling mean 24h = 171.061 (SHAP -0.1599)",
+  "generated_at": "2026-08-07T22:11:47.083106Z"
+}

@@ -1,0 +1,20 @@
+{
+  "cv_strategy": "StratifiedGroupKFold",
+  "folds": 5,
+  "primary_metric": "PR-AUC",
+  "best_model": "XGBoost",
+  "best_parameters": {
+    "subsample": 0.6,
+    "n_estimators": 200,
+    "min_child_weight": 5,
+    "max_depth": 5,
+    "learning_rate": 0.05,
+    "colsample_bytree": 0.6
+  },
+  "mean_cv_pr_auc": 0.9717,
+  "std_cv_pr_auc": 0.0031,
+  "best_cv_score_randomsearch": 0.96,
+  "final_test_pr_auc_default": 0.9702,
+  "final_test_pr_auc_tuned": 0.9737,
+  "generated_at": "2026-08-08T03:02:14.279437"
+}

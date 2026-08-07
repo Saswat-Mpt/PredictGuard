@@ -1,0 +1,117 @@
+[
+  {
+    "machine_id": 16,
+    "timestamp": "2015-07-01 01:00:00",
+    "failure_probability": 0.9442,
+    "risk_level": "CRITICAL",
+    "predicted_component": "comp2",
+    "component_confidence": 0.9989,
+    "component_probabilities": {
+      "comp1": 0.0,
+      "comp2": 0.9989,
+      "comp3": 0.0011,
+      "comp4": 0.0
+    },
+    "top_contributing_features": [
+      "errors_last_24h",
+      "rolling_error_rate_24h",
+      "rotate_rolling_mean_24h",
+      "pressure_rolling_min_24h",
+      "rotate_rolling_median_24h"
+    ],
+    "inspection_advice": "Inspect rotary bearing assembly and lubrication system.",
+    "generated_at": "2026-08-07T22:11:56.068896Z"
+  },
+  {
+    "machine_id": 16,
+    "timestamp": "2015-06-30 20:00:00",
+    "failure_probability": 0.9442,
+    "risk_level": "CRITICAL",
+    "predicted_component": "comp2",
+    "component_confidence": 0.9988,
+    "component_probabilities": {
+      "comp1": 0.0,
+      "comp2": 0.9988,
+      "comp3": 0.0012,
+      "comp4": 0.0
+    },
+    "top_contributing_features": [
+      "errors_last_24h",
+      "rolling_error_rate_24h",
+      "rotate_rolling_mean_24h",
+      "pressure_rolling_min_24h",
+      "rotate_rolling_median_24h"
+    ],
+    "inspection_advice": "Inspect rotary bearing assembly and lubrication system.",
+    "generated_at": "2026-08-07T22:11:56.102020Z"
+  },
+  {
+    "machine_id": 16,
+    "timestamp": "2015-06-30 23:00:00",
+    "failure_probability": 0.9442,
+    "risk_level": "CRITICAL",
+    "predicted_component": "comp2",
+    "component_confidence": 0.9988,
+    "component_probabilities": {
+      "comp1": 0.0,
+      "comp2": 0.9988,
+      "comp3": 0.0012,
+      "comp4": 0.0
+    },
+    "top_contributing_features": [
+      "errors_last_24h",
+      "rolling_error_rate_24h",
+      "rotate_rolling_mean_24h",
+      "pressure_rolling_min_24h",
+      "rotate_rolling_median_24h"
+    ],
+    "inspection_advice": "Inspect rotary bearing assembly and lubrication system.",
+    "generated_at": "2026-08-07T22:11:56.134242Z"
+  },
+  {
+    "machine_id": 16,
+    "timestamp": "2015-07-01 02:00:00",
+    "failure_probability": 0.9442,
+    "risk_level": "CRITICAL",
+    "predicted_component": "comp2",
+    "component_confidence": 0.9991,
+    "component_probabilities": {
+      "comp1": 0.0,
+      "comp2": 0.9991,
+      "comp3": 0.0009,
+      "comp4": 0.0
+    },
+    "top_contributing_features": [
+      "errors_last_24h",
+      "rolling_error_rate_24h",
+      "rotate_rolling_mean_24h",
+      "pressure_rolling_min_24h",
+      "rotate_rolling_median_24h"
+    ],
+    "inspection_advice": "Inspect rotary bearing assembly and lubrication system.",
+    "generated_at": "2026-08-07T22:11:56.164766Z"
+  },
+  {
+    "machine_id": 16,
+    "timestamp": "2015-07-01 00:00:00",
+    "failure_probability": 0.9442,
+    "risk_level": "CRITICAL",
+    "predicted_component": "comp2",
+    "component_confidence": 0.9988,
+    "component_probabilities": {
+      "comp1": 0.0,
+      "comp2": 0.9988,
+      "comp3": 0.0012,
+      "comp4": 0.0
+    },
+    "top_contributing_features": [
+      "errors_last_24h",
+      "rolling_error_rate_24h",
+      "rotate_rolling_mean_24h",
+      "pressure_rolling_min_24h",
+      "rotate_rolling_median_24h"
+    ],
+    "inspection_advice": "Inspect rotary bearing assembly and lubrication system.",
+    "generated_at": "2026-08-07T22:11:56.194428Z"
+  }
+]

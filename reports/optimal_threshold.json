@@ -1,0 +1,27 @@
+{
+  "optimal_threshold": 0.68,
+  "cost_matrix": {
+    "C_FN": 10000.0,
+    "C_FP": 500.0
+  },
+  "metrics_at_optimal": {
+    "threshold": 0.68,
+    "TP": 13374.0,
+    "FP": 615.0,
+    "TN": 686888.0,
+    "FN": 3.0,
+    "precision": 0.956,
+    "recall": 0.9998,
+    "f1": 0.9774,
+    "expected_cost": 337500.0,
+    "dispatch_rate": 0.02,
+    "cost_per_dispatch": 24.13
+  },
+  "sweep_range": {
+    "min": 0.05,
+    "max": 0.95,
+    "step": 0.01
+  },
+  "selected_on": "development_set_only",
+  "generated_at": "2026-08-07T22:24:15.050219Z"
+}

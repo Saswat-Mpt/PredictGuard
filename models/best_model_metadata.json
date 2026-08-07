@@ -1,0 +1,25 @@
+{
+  "model_name": "XGBoost (Tuned)",
+  "stage": "Phase 1 Stage 6",
+  "version": "2.0.0",
+  "training_date": "2026-08-08T03:02:14.222594",
+  "feature_count": 119,
+  "training_rows": 700880,
+  "positive_class_pct": 1.909,
+  "cv_pr_auc_mean": 0.9717,
+  "test_pr_auc": 0.9737,
+  "test_roc_auc": 0.9996,
+  "test_f1_score": 0.9474,
+  "test_recall": 0.9869,
+  "test_precision": 0.911,
+  "best_params": {
+    "subsample": 0.6,
+    "n_estimators": 200,
+    "min_child_weight": 5,
+    "max_depth": 5,
+    "learning_rate": 0.05,
+    "colsample_bytree": 0.6
+  },
+  "best_cv_score": 0.96,
+  "n_search_iterations": 5
+}

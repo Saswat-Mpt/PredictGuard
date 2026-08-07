@@ -1,0 +1,75 @@
+# PredictGuard — Project Configuration
+# All pipeline parameters live here. Change this file, not the source code.
+
+target:
+  # Prediction horizon: how many hours into the future to look for failures
+  prediction_horizon_hours: 24
+  # Whether the end of the window is inclusive (t + horizon]
+  window_inclusive_end: true
+
+split:
+  # Test split ratio (fraction of unique machine IDs for final test set)
+  test_ratio: 0.20
+  # Number of cross-validation folds on development set
+  n_folds: 5
+  # Random seed for machine-level splitting and CV fold generation
+  random_seed: 42
+  # Stratify machine split by machine failure occurrence & model
+  stratify_by_failure: true
+
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+
+reports:
+  output_dir: "reports"
+  figures_dir: "reports/figures"
+
+validation:
+  # Number of machines to inspect during spot-check validation
+  spot_check_n_machines: 5
+  random_seed: 42
+  # Run exhaustive row-level validation (may be slow; set false to skip)
+  full_validation: true
+
+cross_validation:
+  # Grouped K-Fold CV on Development set (grouped by machineID)
+  n_folds: 5
+  random_seed: 42
+  # RandomizedSearchCV settings
+  n_iter_search: 5
+  scoring: "average_precision"          # PR-AUC as primary metric
+  best_model: "XGBoost"
+
+explainability:
+  # Number of rows sampled for global SHAP computation (memory-safe)
+  shap_global_sample_size: 5000
+  shap_beeswarm_sample_size: 3000
+  top_n_features: 20
+  random_state: 42
+
+component_classifier:
+  n_estimators: 300
+  max_depth: 6
+  learning_rate: 0.05
+  min_class_samples: 10     # drop component classes with fewer than this many samples
+  random_state: 42
+
+risk_segmentation:
+  tier_thresholds:
+    LOW:      [0,  20]
+    MEDIUM:   [20, 50]
+    HIGH:     [50, 75]
+    CRITICAL: [75, 100]
+
+cost_decision:
+  C_FN: 10000   # False Negative cost: emergency repair + downtime + safety
+  C_FP:   500   # False Positive cost: technician dispatch + inspection
+  threshold_min:  0.05
+  threshold_max:  0.95
+  threshold_step: 0.01
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s | %(levelname)-8s | %(name)s | %(message)s"
+  datefmt: "%H:%M:%S"

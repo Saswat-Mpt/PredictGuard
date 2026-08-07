@@ -1,0 +1,4 @@
+model_name,brier_score,ece,mce,log_loss,slope,intercept,pr_auc,roc_auc,status
+XGBoost,0.0021,0.0027,0.6105,0.0101,0.873,-2.0071,0.9737,0.9996,Well-calibrated
+Random Forest,0.0023,0.0033,0.3004,0.009,1.4663,0.5359,0.9644,0.9995,Well-calibrated
+Logistic Regression,0.0168,0.024,0.6281,0.0849,0.5382,-2.6156,0.7415,0.9953,Over-confident (predicted prob > actual frequency)

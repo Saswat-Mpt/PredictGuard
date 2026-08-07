@@ -1,0 +1,5 @@
+component,n_samples,precision,recall,f1_score
+comp1,906,1.0,0.9768,0.9883
+comp2,1149,0.9974,0.9913,0.9943
+comp3,1059,0.9706,0.9972,0.9837
+comp4,693,1.0,0.9986,0.9993

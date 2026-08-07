@@ -1,0 +1,19 @@
+{
+  "base_model": "XGBoost",
+  "calibration_method": "Sigmoid",
+  "fitting_cv": "StratifiedGroupKFold(n_splits=5)",
+  "fit_machines": 80,
+  "fit_rows": 700880,
+  "test_machines": 20,
+  "test_rows": 175220,
+  "brier_before": 0.0021,
+  "brier_after": 0.0018,
+  "ece_before": 0.0027,
+  "ece_after": 0.0007,
+  "mce_before": 0.6105,
+  "mce_after": 0.3505,
+  "pr_auc_before": 0.9737,
+  "pr_auc_after": 0.9718,
+  "pr_auc_change": -0.0019,
+  "calibration_timestamp": "2026-08-08T03:14:37.773584"
+}

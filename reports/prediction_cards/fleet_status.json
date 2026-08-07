@@ -1,0 +1,15 @@
+{
+  "fleet_summary": {
+    "LOW": 20,
+    "MEDIUM": 0,
+    "HIGH": 0,
+    "CRITICAL": 0
+  },
+  "highest_risk_machine": 2,
+  "highest_risk_score": 0,
+  "recommended_dispatches": 20,
+  "optimal_threshold": 0.68,
+  "expected_cost_test": 1224000.0,
+  "cost_savings_vs_baseline": -167500.0,
+  "generated_at": "2026-08-07T22:24:15.225809Z"
+}

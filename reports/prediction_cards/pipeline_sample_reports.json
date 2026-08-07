@@ -1,0 +1,177 @@
+[
+  {
+    "machine_id": 3,
+    "timestamp": "2015-11-08 08:00:00",
+    "failure_probability": 0.0003,
+    "risk_score": 0,
+    "risk_tier": "LOW",
+    "predicted_component": "comp3",
+    "component_confidence": 0.3583,
+    "dispatch_decision": "MONITOR",
+    "recommended_action": "Continue scheduled monitoring.",
+    "optimal_threshold": 0.68,
+    "pipeline_version": "1.0.0",
+    "top_shap_features": [
+      {
+        "feature": "maintenance_count_last_30_days",
+        "shap_value": -1.5907
+      },
+      {
+        "feature": "errors_last_24h",
+        "shap_value": 1.3143
+      },
+      {
+        "feature": "pressure_rolling_min_24h",
+        "shap_value": -0.7861
+      },
+      {
+        "feature": "volt_rolling_mean_24h",
+        "shap_value": -0.6966
+      },
+      {
+        "feature": "maintenance_count_last_year",
+        "shap_value": -0.6965
+      }
+    ]
+  },
+  {
+    "machine_id": 89,
+    "timestamp": "2015-08-14 18:00:00",
+    "failure_probability": 0.0003,
+    "risk_score": 0,
+    "risk_tier": "LOW",
+    "predicted_component": "comp1",
+    "component_confidence": 0.3009,
+    "dispatch_decision": "MONITOR",
+    "recommended_action": "Continue scheduled monitoring.",
+    "optimal_threshold": 0.68,
+    "pipeline_version": "1.0.0",
+    "top_shap_features": [
+      {
+        "feature": "errors_last_24h",
+        "shap_value": -3.0288
+      },
+      {
+        "feature": "rolling_error_rate_24h",
+        "shap_value": -0.9181
+      },
+      {
+        "feature": "volt_rolling_mean_24h",
+        "shap_value": -0.4639
+      },
+      {
+        "feature": "errors_last_72h",
+        "shap_value": -0.2902
+      },
+      {
+        "feature": "maintenance_count_last_year",
+        "shap_value": -0.2882
+      }
+    ]
+  },
+  {
+    "machine_id": 3,
+    "timestamp": "2015-07-31 02:00:00",
+    "failure_probability": 0.0003,
+    "risk_score": 0,
+    "risk_tier": "LOW",
+    "predicted_component": "comp2",
+    "component_confidence": 0.2994,
+    "dispatch_decision": "MONITOR",
+    "recommended_action": "Continue scheduled monitoring.",
+    "optimal_threshold": 0.68,
+    "pipeline_version": "1.0.0",
+    "top_shap_features": [
+      {
+        "feature": "errors_last_24h",
+        "shap_value": -2.9969
+      },
+      {
+        "feature": "rolling_error_rate_24h",
+        "shap_value": -0.9323
+      },
+      {
+        "feature": "volt_rolling_mean_24h",
+        "shap_value": -0.5198
+      },
+      {
+        "feature": "pressure_rolling_min_24h",
+        "shap_value": -0.3767
+      },
+      {
+        "feature": "volt_rolling_median_24h",
+        "shap_value": -0.3539
+      }
+    ]
+  },
+  {
+    "machine_id": 22,
+    "timestamp": "2015-09-11 17:00:00",
+    "failure_probability": 0.0003,
+    "risk_score": 0,
+    "risk_tier": "LOW",
+    "predicted_component": "comp4",
+    "component_confidence": 0.274,
+    "dispatch_decision": "MONITOR",
+    "recommended_action": "Continue scheduled monitoring.",
+    "optimal_threshold": 0.68,
+    "pipeline_version": "1.0.0",
+    "top_shap_features": [
+      {
+        "feature": "errors_last_24h",
+        "shap_value": -3.1642
+      },
+      {
+        "feature": "rolling_error_rate_24h",
+        "shap_value": -0.9494
+      },
+      {
+        "feature": "volt_rolling_mean_24h",
+        "shap_value": -0.4224
+      },
+      {
+        "feature": "pressure_rolling_min_24h",
+        "shap_value": -0.3774
+      },
+      {
+        "feature": "vibration_rolling_mean_24h",
+        "shap_value": -0.2943
+      }
+    ]
+  },
+  {
+    "machine_id": 76,
+    "timestamp": "2015-10-22 10:00:00",
+    "failure_probability": 0.0003,
+    "risk_score": 0,
+    "risk_tier": "LOW",
+    "predicted_component": "comp2",
+    "component_confidence": 0.3918,
+    "dispatch_decision": "MONITOR",
+    "recommended_action": "Continue scheduled monitoring.",
+    "optimal_threshold": 0.68,
+    "pipeline_version": "1.0.0",
+    "top_shap_features": [
+      {
+        "feature": "errors_last_24h",
+        "shap_value": -3.0048
+      },
+      {
+        "feature": "rolling_error_rate_24h",
+        "shap_value": -0.9216
+      },
+      {
+        "feature": "maintenance_count_last_year",
+        "shap_value": -0.5338
+      },
+      {
+        "feature": "volt_rolling_mean_24h",
+        "shap_value": -0.4272
+      },
+      {
+        "feature": "pressure_rolling_min_24h",
+        "shap_value": -0.3601
+      }
+    ]
+  }
+]
