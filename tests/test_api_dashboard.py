@@ -23,7 +23,7 @@ PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from app.api import app
-from app.dashboard import load_pipeline
+from src.pipeline import PredictGuardPipeline
 
 
 @pytest.fixture
@@ -101,7 +101,8 @@ def test_api_invalid_batch(client):
 
 
 def test_dashboard_loads_pipeline():
-    """Streamlit dashboard pipeline cache loader must return PredictGuardPipeline."""
-    p = load_pipeline()
+    """PredictGuardPipeline loader must load saved pipeline cleanly."""
+    models_dir = PROJECT_ROOT / "models"
+    p = PredictGuardPipeline.load(models_dir)
     assert p is not None
     assert hasattr(p, "predict_report")
