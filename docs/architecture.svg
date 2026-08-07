@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" width="100%" height="100%" style="background-color: #0d1117; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="primary" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f6feb"/>
+      <stop offset="100%" stop-color="#388bfd"/>
+    </linearGradient>
+    <linearGradient id="success" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#238636"/>
+      <stop offset="100%" stop-color="#2ea043"/>
+    </linearGradient>
+    <linearGradient id="warning" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9e6a03"/>
+      <stop offset="100%" stop-color="#bb8009"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8957e5"/>
+      <stop offset="100%" stop-color="#a371f7"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" fill="#58a6ff" font-size="22" font-weight="700" letter-spacing="1">PREDICTGUARD — SYSTEM ARCHITECTURE</text>
+  <text x="450" y="62" text-anchor="middle" fill="#8b949e" font-size="13">End-to-End Machine Learning, Calibration, Explainability &amp; Decision Support Pipeline</text>
+
+  <!-- Stage Blocks -->
+  <!-- Data Layer -->
+  <g filter="url(#shadow)">
+    <rect x="50" y="90" width="800" height="60" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <text x="70" y="115" fill="#8b949e" font-size="11" font-weight="600">INPUT DATA LAYER</text>
+    <text x="70" y="135" fill="#c9d1d9" font-size="14" font-weight="600">876,100 Hourly Telemetry Records (100 Machines) — Telemetry, Maintenance, Errors &amp; Failures</text>
+  </g>
+
+  <!-- Connection Arrow -->
+  <path d="M 450 150 L 450 175" stroke="#58a6ff" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Pipeline Box 1: Preprocessing & Baseline -->
+  <g filter="url(#shadow)">
+    <rect x="50" y="175" width="380" height="120" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <rect x="50" y="175" width="380" height="28" rx="8" fill="#21262d"/>
+    <text x="65" y="194" fill="#58a6ff" font-size="12" font-weight="700">PHASE 1: FEATURE &amp; MODELING FOUNDATION</text>
+    <text x="65" y="222" fill="#c9d1d9" font-size="13">• Automated Data Quality Validation (20+ checks)</text>
+    <text x="65" y="242" fill="#c9d1d9" font-size="13">• 119 Leakage-Free Features &amp; 24h Failure Target</text>
+    <text x="65" y="262" fill="#c9d1d9" font-size="13">• Grouped Machine Split (80 Dev / 20 Test)</text>
+    <text x="65" y="282" fill="#c9d1d9" font-size="13">• Tuned XGBoost Binary Model (PR-AUC 0.9737)</text>
+  </g>
+
+  <!-- Pipeline Box 2: Calibration -->
+  <g filter="url(#shadow)">
+    <rect x="470" y="175" width="380" height="120" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <rect x="470" y="175" width="380" height="28" rx="8" fill="#21262d"/>
+    <text x="485" y="194" fill="#3fb950" font-size="12" font-weight="700">PHASE 2: PROBABILITY CALIBRATION</text>
+    <text x="485" y="222" fill="#c9d1d9" font-size="13">• Evaluates Reliability (Brier, ECE, MCE metrics)</text>
+    <text x="485" y="242" fill="#c9d1d9" font-size="13">• Fits Post-Hoc Sigmoid (Platt Scaling) Calibration</text>
+    <text x="485" y="262" fill="#c9d1d9" font-size="13">• Reduces Expected Calibration Error (ECE) by 74.1%</text>
+    <text x="485" y="282" fill="#c9d1d9" font-size="13">• P(Failure) reflects true empirical failure rates</text>
+  </g>
+
+  <!-- Connection Arrows -->
+  <path d="M 240 295 L 240 330 L 240 335" stroke="#58a6ff" stroke-width="2"/>
+  <path d="M 660 295 L 660 330 L 450 335" stroke="#3fb950" stroke-width="2"/>
+  <path d="M 450 335 L 450 355" stroke="#d29922" stroke-width="2.5"/>
+
+  <!-- Phase 3: Explainability & Decision Support -->
+  <g filter="url(#shadow)">
+    <rect x="50" y="355" width="800" height="130" rx="8" fill="#161b22" stroke="#d29922" stroke-width="1.5"/>
+    <rect x="50" y="355" width="800" height="28" rx="8" fill="#261c0c"/>
+    <text x="65" y="374" fill="#d29922" font-size="12" font-weight="700">PHASE 3: EXPLAINABILITY &amp; DECISION SUPPORT INTELLIGENCE</text>
+    
+    <!-- Sub-boxes -->
+    <rect x="65" y="393" width="235" height="78" rx="6" fill="#0d1117" stroke="#30363d"/>
+    <text x="75" y="413" fill="#a371f7" font-size="11" font-weight="700">SHAP Driver Attribution</text>
+    <text x="75" y="431" fill="#8b949e" font-size="11">Tree-path feature log-odds</text>
+    <text x="75" y="447" fill="#8b949e" font-size="11">Global summary &amp; local cards</text>
+
+    <rect x="315" y="393" width="240" height="78" rx="6" fill="#0d1117" stroke="#30363d"/>
+    <text x="325" y="413" fill="#58a6ff" font-size="11" font-weight="700">Component Failure Classifier</text>
+    <text x="325" y="431" fill="#8b949e" font-size="11">Multiclass XGBoost (comp1–4)</text>
+    <text x="325" y="447" fill="#8b949e" font-size="11">99.1% Test Accuracy</text>
+
+    <rect x="570" y="393" width="265" height="78" rx="6" fill="#0d1117" stroke="#30363d"/>
+    <text x="580" y="413" fill="#3fb950" font-size="11" font-weight="700">Cost-Based Dispatch Engine</text>
+    <text x="580" y="431" fill="#8b949e" font-size="11">Cost Matrix ($10k FN vs $500 FP)</text>
+    <text x="580" y="447" fill="#8b949e" font-size="11">Optimal Threshold 0.68 (15.8% Savings)</text>
+  </g>
+
+  <!-- Connection Arrow -->
+  <path d="M 450 485 L 450 515" stroke="#a371f7" stroke-width="2.5"/>
+
+  <!-- Phase 4: Production Pipeline & Delivery -->
+  <g filter="url(#shadow)">
+    <rect x="50" y="515" width="800" height="105" rx="8" fill="#161b22" stroke="#a371f7" stroke-width="1.5"/>
+    <rect x="50" y="515" width="800" height="28" rx="8" fill="#241734"/>
+    <text x="65" y="534" fill="#a371f7" font-size="12" font-weight="700">PHASE 4: PIPELINE PERSISTENCE, API &amp; DASHBOARD PACKAGING</text>
+    
+    <text x="65" y="562" fill="#c9d1d9" font-size="12.5">• Serialised Pipeline: predictguard_pipeline.pkl (6.8 MB) — exact 100% reproducibility (max diff = 0.0)</text>
+    <text x="65" y="582" fill="#c9d1d9" font-size="12.5">• MLflow Experiment Store: SQLite tracking database logging 30+ metrics, cost sweep, figures &amp; artifacts</text>
+    <text x="65" y="602" fill="#c9d1d9" font-size="12.5">• Production Delivery: FastAPI REST Server (/predict, /batch) + Streamlit Dashboard + Docker Compose + Pytest CI</text>
+  </g>
+</svg>
