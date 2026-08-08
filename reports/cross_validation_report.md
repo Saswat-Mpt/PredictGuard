@@ -57,7 +57,7 @@ measures performance on the rare failure class across all decision thresholds.
 | Strategy | `RandomizedSearchCV` |
 | Inner CV | `StratifiedGroupKFold(n_splits=5)` grouped by `machineID` |
 | Scoring | `average_precision` (PR-AUC) |
-| Iterations | 15 |
+| Iterations | 5 |
 | Random Seed | 42 |
 
 ### Search Space
