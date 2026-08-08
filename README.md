@@ -5,7 +5,7 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.32+-red.svg)](https://streamlit.io/)
 [![XGBoost](https://img.shields.io/badge/XGBoost-2.0+-orange.svg)](https://xgboost.readthedocs.io/)
 [![MLflow](https://img.shields.io/badge/MLflow-3.15+-yellow.svg)](https://mlflow.org/)
-[![Pytest](https://img.shields.io/badge/Pytest-62%20passed-success.svg)](https://docs.pytest.org/)
+[![Pytest](https://img.shields.io/badge/Pytest-64%20passed-success.svg)](https://docs.pytest.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
 
 PredictGuard is an end-to-end machine learning engineering project designed to solve real-world industrial predictive maintenance challenges across **876,100 hourly telemetry records** from 100 industrial machines.
@@ -39,7 +39,7 @@ All metrics reported below are automatically computed by the pipeline and linked
 ### 1. Model Baseline & Grouped CV (Phase 1)
 Evaluated on 80 Development machines using 5-fold `GroupKFold` cross-validation (zero machine-ID overlap). See [`reports/cv_results.csv`](reports/cv_results.csv).
 
-| Model | Cross-Validation Strategy | Test PR-AUC | Test ROC-AUC | Status |
+| Model | Cross-Validation Strategy | Mean CV PR-AUC | Mean CV ROC-AUC | Status |
 |---|---|---|---|---|
 | **Logistic Regression** | Grouped 5-Fold CV | 0.8210 | 0.9120 | Baseline |
 | **Random Forest** | Grouped 5-Fold CV | 0.9540 | 0.9810 | Strong |
@@ -58,13 +58,13 @@ Evaluated using Brier Score and Expected Calibration Error (ECE) across 10 proba
 ### 3. Component Failure Diagnosis (Phase 3 Stage 10)
 Multiclass XGBoost trained with inverse-frequency sample weighting to isolate exact component failures (`comp1` to `comp4`). See [`reports/component_metrics.csv`](reports/component_metrics.csv).
 
-| Component | Class Name | Test Precision | Test Recall | Test F1-Score |
-|---|---|---|---|---|
-| **comp1** | Hydraulic System | 1.0000 | 0.9768 | 0.9883 |
-| **comp2** | Mechanical Bearing | 0.9974 | 0.9913 | 0.9943 |
-| **comp3** | Electrical Circuit | 0.9706 | 0.9972 | 0.9837 |
-| **comp4** | Drive Belt / Vibration | 1.0000 | 0.9986 | 0.9993 |
-| **Overall** | **Macro Average** | **0.9920** | **0.9910** | **0.9910 (99.1% Acc)** |
+| Component Class | Test Precision | Test Recall | Test F1-Score |
+|---|---|---|---|
+| **comp1** | 1.0000 | 0.9768 | 0.9883 |
+| **comp2** | 0.9974 | 0.9913 | 0.9943 |
+| **comp3** | 0.9706 | 0.9972 | 0.9837 |
+| **comp4** | 1.0000 | 0.9986 | 0.9993 |
+| **Overall (Macro Average)** | **0.9920** | **0.9910** | **0.9910 (99.1% Acc)** |
 
 ### 4. Cost-Based Dispatch Decision Optimization (Phase 3 Stage 12)
 Asymmetric cost matrix: False Negative ($C_{FN}$) = **$10,000** | False Positive ($C_{FP}$) = **$500** ($20\times$ ratio). Optimal threshold swept on Development data and evaluated once on 20 test machines (175,220 hours). See [`reports/cost_analysis.csv`](reports/cost_analysis.csv) and [`reports/optimal_threshold.json`](reports/optimal_threshold.json).
@@ -174,7 +174,7 @@ curl -X POST "http://localhost:8000/predict" \
 
 - **Why Machine-Level Splitting (`GroupKFold`)?** Rows from the same machine are highly correlated over time. Random row-level splitting leaks machine-specific telemetry across sets. Grouping 80 Dev and 20 Test machines guarantees zero machine-ID overlap.
 - **Why PR-AUC Over ROC-AUC?** Failure events represent only ~1.5% of hourly records. Because True Negatives dominate (~860k rows), ROC-AUC is artificially inflated (>0.99). PR-AUC evaluates Precision against Recall directly, making it the appropriate metric for severe class imbalance.
-- **Why Probability Calibration?** Tree-based ensembles like XGBoost output overconfident probabilities near boundaries due to log-loss optimization. Sigmoid calibration ensures a predicted probability of 0.70 corresponds to a ~70% true empirical failure rate.
+- **Why Probability Calibration?** Tree-based ensembles like XGBoost output overconfident probabilities near boundaries due to log-loss optimization. Sigmoid (Platt Scaling) calibration aligns predicted probabilities with empirical frequencies, ensuring that across a cohort of assets assigned a 0.70 failure probability, approximately 70% empirically experience failure.
 - **Why Tree-Path SHAP?** Technician dispatch cards require plain-English feature log-odds attribution so maintenance teams understand *why* a machine is flagged before going on-site.
 - **Why Cost-Based Threshold Optimization?** In industrial maintenance, missing a breakdown ($10,000 FN cost) is $20\times$ more expensive than an unnecessary inspection ($500 FP cost). Deriving the optimal threshold (0.68) saved $167,500 compared to default 0.50 thresholding.
 
