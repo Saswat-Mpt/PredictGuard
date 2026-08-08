@@ -103,7 +103,7 @@ measures performance on the rare failure class across all decision thresholds.
 ## 6. Limitations
 
 1. **No calibration applied**: Raw probabilities may be miscalibrated. Calibration begins in Phase 2.
-2. **Light search only**: 15 RandomizedSearchCV iterations explore a small region of the search space.
+2. **Light search only**: 5 RandomizedSearchCV iterations explore a focused region of the search space.
 3. **XGBoost only tuned**: LR and RF were not tuned (acceptable for Stage 6 baselines).
 4. **Static `scale_pos_weight`**: Fixed globally; per-fold recomputation is used in CV only.
 

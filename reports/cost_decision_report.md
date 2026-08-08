@@ -78,9 +78,10 @@ Expected Cost(t) = C_FN × FN(t) + C_FP × FP(t)
 
 | Property | Value |
 |---|---|
-| Risk Score | **0** / 100 |
-| Risk Tier | **LOW** |
-| Calibrated Probability | 94.4% |
+| Latest Risk Score | **0** / 100 |
+| **Peak 24h Risk Score** | **94** / 100 |
+| Latest Probability | 0.03% |
+| **Peak 24h Probability** | **94.4%** |
 | Predicted Component | `comp2` (29% confidence) |
 | Decision | **DISPATCH** |
 | Reason | Peak risk 94.4% ≥ optimal threshold 68.0%. |
@@ -90,9 +91,10 @@ Expected Cost(t) = C_FN × FN(t) + C_FP × FP(t)
 
 | Property | Value |
 |---|---|
-| Risk Score | **0** / 100 |
-| Risk Tier | **LOW** |
-| Calibrated Probability | 94.4% |
+| Latest Risk Score | **0** / 100 |
+| **Peak 24h Risk Score** | **94** / 100 |
+| Latest Probability | 0.03% |
+| **Peak 24h Probability** | **94.4%** |
 | Predicted Component | `comp2` (31% confidence) |
 | Decision | **DISPATCH** |
 | Reason | Peak risk 94.4% ≥ optimal threshold 68.0%. |
@@ -102,9 +104,10 @@ Expected Cost(t) = C_FN × FN(t) + C_FP × FP(t)
 
 | Property | Value |
 |---|---|
-| Risk Score | **0** / 100 |
-| Risk Tier | **LOW** |
-| Calibrated Probability | 94.4% |
+| Latest Risk Score | **0** / 100 |
+| **Peak 24h Risk Score** | **94** / 100 |
+| Latest Probability | 0.03% |
+| **Peak 24h Probability** | **94.4%** |
 | Predicted Component | `comp4` (95% confidence) |
 | Decision | **DISPATCH** |
 | Reason | Peak risk 94.4% ≥ optimal threshold 68.0%. |

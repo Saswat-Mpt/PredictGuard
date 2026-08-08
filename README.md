@@ -50,10 +50,10 @@ Evaluated using Brier Score and Expected Calibration Error (ECE) across 10 proba
 
 | Model State | Brier Score | Expected Calibration Error (ECE) | Maximum Calibration Error (MCE) |
 |---|---|---|---|
-| **Raw XGBoost** | 0.0018 | 0.0027 | 0.0412 |
-| **Calibrated XGBoost (Sigmoid)** | **0.0005** | **0.0007** | **0.0118** |
+| **Raw XGBoost** | 0.0021 | 0.0027 | 0.6105 |
+| **Calibrated XGBoost (Sigmoid)** | **0.0018** | **0.0007** | **0.3505** |
 
-> **Key Finding**: Post-hoc Sigmoid (Platt Scaling) calibration reduced Expected Calibration Error by **74.1%** while preserving PR-AUC at 0.9737.
+> **Key Finding**: Post-hoc Sigmoid (Platt Scaling) calibration reduced Expected Calibration Error by **74.1%** (0.0027 → 0.0007) while preserving PR-AUC at 0.9737.
 
 ### 3. Component Failure Diagnosis (Phase 3 Stage 10)
 Multiclass XGBoost trained with inverse-frequency sample weighting to isolate exact component failures (`comp1` to `comp4`). See [`reports/component_metrics.csv`](reports/component_metrics.csv).
@@ -67,12 +67,14 @@ Multiclass XGBoost trained with inverse-frequency sample weighting to isolate ex
 | **Overall (Macro Average)** | **0.9920** | **0.9910** | **0.9910 (99.1% Acc)** |
 
 ### 4. Cost-Based Dispatch Decision Optimization (Phase 3 Stage 12)
-Asymmetric cost matrix: False Negative ($C_{FN}$) = **$10,000** | False Positive ($C_{FP}$) = **$500** ($20\times$ ratio). Optimal threshold swept on Development data and evaluated once on 20 test machines (175,220 hours). See [`reports/cost_analysis.csv`](reports/cost_analysis.csv) and [`reports/optimal_threshold.json`](reports/optimal_threshold.json).
+Asymmetric cost matrix: False Negative ($C_{FN}$) = **$10,000** | False Positive ($C_{FP}$) = **$500** ($20\times$ ratio). The optimal threshold ($0.68$) was selected strictly on Development machines (80 machines) and evaluated on 20 unseen Test machines (175,220 hours). See [`reports/cost_analysis.csv`](reports/cost_analysis.csv) and [`reports/optimal_threshold.json`](reports/optimal_threshold.json).
 
-| Decision Threshold | Test Recall | Test Precision | Test F1 | Expected Total Cost | Cost Savings vs 0.50 |
-|---|---|---|---|---|---|
-| Default Baseline (`0.50`) | 0.8520 | 0.9610 | 0.9032 | $1,391,500 | $0 (Baseline) |
-| **Optimal Threshold (`0.68`)** | **0.9711** | **0.9371** | **0.9538** | **$1,224,000** | **+$167,500 (15.8% Savings)** |
+| Dataset Split | Decision Threshold | Recall | Precision | F1 | Expected Total Cost | Dispatch Rate |
+|---|---|---|---|---|---|---|
+| **Development Set (Selection)** | **0.6800** | **0.9998** | 0.9560 | 0.9774 | **$337,500** | 2.00% |
+| **Final Test Set (Evaluation)** | **0.6800** | **0.9711** | 0.9371 | 0.9538 | **$1,224,000** | 2.25% |
+
+> **Methodology Note**: The optimal threshold ($0.68$) achieved **97.11% Recall** on the final test set (minimizing missed breakdowns). Evaluating threshold policy generalization across unseen machine cohorts reveals sensitivity to operational distributions, demonstrating why decision policies must be validated independently from ranking discrimination.
 
 ---
 
@@ -105,10 +107,20 @@ python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 
 # Install dependencies
-pip install -r requirements.txt
-```
+### 2. Dataset Download & Setup
+PredictGuard uses the **Microsoft Azure Predictive Maintenance Dataset** (876,100 hourly telemetry rows). Raw CSV files are excluded from Git due to repository size limits.
 
-### 2. Execute Pytest Test Suite (62 Unit Tests)
+To run the pipeline from scratch:
+1. Download raw telemetry CSV files (`PdM_telemetry.csv`, `PdM_errors.csv`, `PdM_maint.csv`, `PdM_failures.csv`, `PdM_machines.csv`).
+2. Place files into `data/raw/`.
+3. Run the orchestration pipeline:
+   ```bash
+   python scripts/run_stage1.py
+   python scripts/run_stage2.py
+   ...
+   ```
+
+### 3. Execute Pytest Test Suite (64 Unit Tests)
 ```bash
 pytest tests/ -v
 ```
