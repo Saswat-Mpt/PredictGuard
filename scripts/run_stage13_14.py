@@ -48,7 +48,7 @@ logger = logging.getLogger("run_stage13_14")
 # ---------------------------------------------------------------------------
 # Project paths
 # ---------------------------------------------------------------------------
-PROJECT_ROOT = Path(__file__).parent
+PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 DATA_DIR    = PROJECT_ROOT / "data" / "processed"

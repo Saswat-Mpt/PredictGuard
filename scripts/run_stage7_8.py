@@ -33,7 +33,7 @@ import numpy as np
 import pandas as pd
 import yaml
 
-PROJECT_ROOT = Path(__file__).parent
+PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.calibration import (

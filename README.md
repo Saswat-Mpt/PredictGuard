@@ -174,6 +174,17 @@ curl -X POST "http://localhost:8000/predict" \
 
 ```text
 PredictGuard/
+├── scripts/                       # Stage execution / orchestration scripts
+│   ├── run_stage1.py              # Stage 1: Data Validation
+│   ├── run_stage2.py              # Stage 2: Target Construction
+│   ├── run_stage3.py              # Stage 3: Feature Engineering
+│   ├── run_stage4.py              # Stage 4: Machine Splitting
+│   ├── run_stage5.py              # Stage 5: Baseline Training
+│   ├── run_stage6.py              # Stage 6: Grouped CV & Tuning
+│   ├── run_stage7_8.py            # Stages 7-8: Reliability & Calibration
+│   ├── run_stage9_10.py           # Stages 9-10: SHAP & Component Classifier
+│   ├── run_stage11_12.py          # Stages 11-12: Fleet Risk & Cost Matrix
+│   └── run_stage13_14.py          # Stages 13-14: MLflow & Pipeline Export
 ├── app/
 │   ├── api.py                     # FastAPI server (/predict, /batch_predict)
 │   ├── dashboard.py               # Streamlit Dashboard (Machine & Fleet View)
