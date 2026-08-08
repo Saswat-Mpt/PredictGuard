@@ -191,7 +191,8 @@ curl -X POST "http://localhost:8000/predict" \
 - **Why PR-AUC Over ROC-AUC?** Failure events represent only ~1.5% of hourly records. Because True Negatives dominate (~860k rows), ROC-AUC is artificially inflated (>0.99). PR-AUC evaluates Precision against Recall directly, making it the appropriate metric for severe class imbalance.
 - **Why Probability Calibration?** Tree-based ensembles like XGBoost output overconfident probabilities near boundaries due to log-loss optimization. Sigmoid (Platt Scaling) calibration aligns predicted probabilities with empirical frequencies, ensuring that across a cohort of assets assigned a 0.70 failure probability, approximately 70% empirically experience failure.
 - **Why Tree-Path SHAP?** Technician dispatch cards require plain-English feature log-odds attribution so maintenance teams understand *why* a machine is flagged before going on-site.
-- **Why Cost-Based Threshold Optimization?** In industrial maintenance, missing a breakdown ($10,000 FN cost) is $20\times$ more expensive than an unnecessary inspection ($500 FP cost). Deriving the optimal threshold (0.68) saved $167,500 compared to default 0.50 thresholding.
+- **Why Cost-Based Threshold Optimization?** In industrial maintenance, missing a breakdown ($10,000 FN cost) is $20× more expensive than an unnecessary inspection ($500 FP cost). The optimal threshold (0.68) was selected on the Development set by minimizing expected cost and then evaluated on the unseen Final Test machines.
+
 
 ---
 
