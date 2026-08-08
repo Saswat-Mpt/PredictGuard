@@ -170,6 +170,30 @@ curl -X POST "http://localhost:8000/predict" \
 
 ---
 
+## 🧠 Key Design Decisions
+
+- **Why Machine-Level Splitting (`GroupKFold`)?** Rows from the same machine are highly correlated over time. Random row-level splitting leaks machine-specific telemetry across sets. Grouping 80 Dev and 20 Test machines guarantees zero machine-ID overlap.
+- **Why PR-AUC Over ROC-AUC?** Failure events represent only ~1.5% of hourly records. Because True Negatives dominate (~860k rows), ROC-AUC is artificially inflated (>0.99). PR-AUC evaluates Precision against Recall directly, making it the appropriate metric for severe class imbalance.
+- **Why Probability Calibration?** Tree-based ensembles like XGBoost output overconfident probabilities near boundaries due to log-loss optimization. Sigmoid calibration ensures a predicted probability of 0.70 corresponds to a ~70% true empirical failure rate.
+- **Why Tree-Path SHAP?** Technician dispatch cards require plain-English feature log-odds attribution so maintenance teams understand *why* a machine is flagged before going on-site.
+- **Why Cost-Based Threshold Optimization?** In industrial maintenance, missing a breakdown ($10,000 FN cost) is $20\times$ more expensive than an unnecessary inspection ($500 FP cost). Deriving the optimal threshold (0.68) saved $167,500 compared to default 0.50 thresholding.
+
+---
+
+## ⚠️ Limitations & Future Work
+
+### Limitations
+- **Historical Synthetic Telemetry**: Evaluated on public benchmark telemetry data; real-world industrial environments may experience sensor noise and drift.
+- **Static Cost Assumptions**: Cost parameters ($10k/$500) are organization-specific inputs that vary across facilities.
+- **Fixed Component Schema**: Component classification is constrained to the four failure categories (`comp1` to `comp4`) present in the training set.
+
+### Future Work
+- **Streaming Ingestion**: Real-time telemetry streaming via Kafka and Redis.
+- **Drift Monitoring**: Automated data/concept drift detection (e.g. Evidently AI).
+- **Incident Alerts**: Real-time Slack/Teams alerts for `CRITICAL` risk assets.
+
+---
+
 ## 📁 Repository Organization
 
 ```text
