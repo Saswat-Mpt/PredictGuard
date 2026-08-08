@@ -37,13 +37,13 @@ PredictGuard addresses these challenges by combining **grouped machine-level val
 All metrics reported below are automatically computed by the pipeline and linked directly to reproducible CSV and JSON reports in the repository.
 
 ### 1. Model Baseline & Grouped CV (Phase 1)
-Evaluated on 80 Development machines using 5-fold `GroupKFold` cross-validation (zero machine-ID overlap). See [`reports/cv_results.csv`](reports/cv_results.csv).
+Evaluated on 80 Development machines using 5-fold `GroupKFold` cross-validation (zero machine-ID overlap). See [`reports/cv_results.csv`](reports/cv_results.csv) and [`reports/cv_summary.json`](reports/cv_summary.json).
 
 | Model | Cross-Validation Strategy | Mean CV PR-AUC | Mean CV ROC-AUC | Status |
 |---|---|---|---|---|
-| **Logistic Regression** | Grouped 5-Fold CV | 0.8210 | 0.9120 | Baseline |
-| **Random Forest** | Grouped 5-Fold CV | 0.9540 | 0.9810 | Strong |
-| **Tuned XGBoost** | Grouped 5-Fold CV | **0.9737** | **0.9942** | **Best** |
+| **Logistic Regression** | Grouped 5-Fold CV | 0.7776 | 0.9938 | Baseline |
+| **Random Forest** | Grouped 5-Fold CV | 0.9707 | 0.9990 | Strong |
+| **Tuned XGBoost** | Grouped 5-Fold CV | **0.9717** | **0.9991** | **Best** |
 
 ### 2. Probability Calibration (Phase 2)
 Evaluated using Brier Score and Expected Calibration Error (ECE) across 10 probability bins. See [`reports/calibration_metrics.csv`](reports/calibration_metrics.csv) and [`reports/calibration_before_after.csv`](reports/calibration_before_after.csv).
@@ -53,7 +53,7 @@ Evaluated using Brier Score and Expected Calibration Error (ECE) across 10 proba
 | **Raw XGBoost** | 0.0021 | 0.0027 | 0.6105 |
 | **Calibrated XGBoost (Sigmoid)** | **0.0018** | **0.0007** | **0.3505** |
 
-> **Key Finding**: Post-hoc Sigmoid (Platt Scaling) calibration reduced Expected Calibration Error by **74.1%** (0.0027 → 0.0007) while preserving PR-AUC at 0.9737.
+> **Key Finding**: Post-hoc Sigmoid (Platt Scaling) calibration reduced Expected Calibration Error by **74.1%** (0.0027 → 0.0007) while causing only a minimal change in ranking discrimination (PR-AUC 0.9737 → 0.9718).
 
 ### 3. Component Failure Diagnosis (Phase 3 Stage 10)
 Multiclass XGBoost trained with inverse-frequency sample weighting to isolate exact component failures (`comp1` to `comp4`). See [`reports/component_metrics.csv`](reports/component_metrics.csv).
@@ -107,6 +107,9 @@ python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 
 # Install dependencies
+pip install -r requirements.txt
+```
+
 ### 2. Dataset Download & Setup
 PredictGuard uses the **Microsoft Azure Predictive Maintenance Dataset** (876,100 hourly telemetry rows). Raw CSV files are excluded from Git due to repository size limits.
 
@@ -125,7 +128,7 @@ To run the pipeline from scratch:
 pytest tests/ -v
 ```
 
-### 3. Launch Local Services
+### 4. Launch Local Services
 
 | Application | Command | Endpoint |
 |---|---|---|
@@ -133,7 +136,7 @@ pytest tests/ -v
 | **Streamlit Dashboard** | `streamlit run app/dashboard.py` | `http://localhost:8501` |
 | **MLflow Experiment UI** | `mlflow ui --backend-store-uri mlruns/mlflow.db` | `http://localhost:5000` |
 
-### 4. Docker Compose (One-Command Deployment)
+### 5. Docker Compose (One-Command Deployment)
 ```bash
 docker-compose up --build
 ```
