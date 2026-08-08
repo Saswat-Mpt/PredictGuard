@@ -250,7 +250,7 @@ PredictGuard/
 │   ├── cost_analysis.csv
 │   ├── cv_results.csv
 │   └── pipeline_validation.md
-├── tests/                         # 62 unit & integration tests
+├── tests/                         # 64 unit & integration tests
 ├── docs/                          # SVG architecture diagram
 ├── Dockerfile                     # Python 3.12 container
 ├── docker-compose.yml             # Orchestration for API + Streamlit
